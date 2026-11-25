@@ -23,7 +23,7 @@ dict_params = {
     "sex": option_sex,
 }
 
-url_predict = f"https://zoo-api-1067335407750.europe-west1.run.app/predict?island={dict_params['island']}&bill_length_mm={dict_params['bill_length_mm']}&bill_depth_mm={dict_params['bill_depth_mm']}&flipper_length_mm={dict_params['flipper_length_mm']}&body_mass_g={dict_params['body_mass_g']}&sex={dict_params['sex']}"
+url_predict = f"{st.secrets['API_URL']}/predict?island={dict_params['island']}&bill_length_mm={dict_params['bill_length_mm']}&bill_depth_mm={dict_params['bill_depth_mm']}&flipper_length_mm={dict_params['flipper_length_mm']}&body_mass_g={dict_params['body_mass_g']}&sex={dict_params['sex']}"
 if st.button('Predict'):
     data = requests.get(url_predict).json()
     st.write(f"We predict with a probability of {round(data['probability'], 2)}% that it is a penguin from the {data['species']} species.")
